@@ -9,3 +9,4 @@ let totalBoost = 0;
 let totalMultiplier = 1;
 let ppcTotalBoost = 0;
 let ppcTotalMultiplier = 1;
+let buyScale = 1
