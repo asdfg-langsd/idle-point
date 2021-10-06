@@ -11,7 +11,7 @@ function reload(){
     element('increment').textContent = "Increment " + pointPerClick.toString() + text
     element('pointCounter').textContent = point.toString() + text
     element('oneBitCalculatorText').textContent = "Calculator (1-bit): " + objects.oneBitCalculator.amount.toString()
-    element('oneBitCalculatorCost').textContent = "Cost: " + objects.oneBitCalculator.cost + text
+    element('oneBitCalculatorCost').textContent = "Cost: " + objects.oneBitCalculator.cost.toString() + text
 
 }
 
