@@ -23,7 +23,7 @@ function buttonIncrement() {
 function buy(obj) {
     if(obj == 'oneBitCalculator'){
         if(point >= objects.oneBitCalculator.cost*buyScale){
-            point -= realCost * buyScale
+            point -= objects.oneBitCalculator.cost * buyScale
             objects.oneBitCalculator.cost = Math.ceil(objects.oneBitCalculator.cost * 0.26)
             objects.oneBitCalculator.amount += 1*buyScale
             pointPerClick = 1 + objects.oneBitCalculator.amount
