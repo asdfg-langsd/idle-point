@@ -16,9 +16,6 @@ button {
     color: white;
 }
 
-div#buyScale{
-    border: 3px solid gray;
-}
 input#buyScale{
     border: 3px solid black;
     size: 12px;
