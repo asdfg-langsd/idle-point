@@ -2,22 +2,57 @@ function element(id){
     return document.getElementById(id)
 }
 
+function int(i){
+    return parseInt(i)
+}
+
+function reload(){
+    let text = point < 2 ? " Point" : " Points"
+    element('increment').textContent = "Increment " + pointPerClick.toString() + text
+    element('pointCounter').textContent = point.toString() + text
+    element('oneBitCalculatorText').textContent = "Calculator (1-bit): " + objects.oneBitCalculator.amount.toString()
+    element('oneBitCalculatorCost').textContent = "Cost: " + objects.oneBitCalculator.cost + text
+
+}
+
 function buttonIncrement() {
     point += pointPerClick
-    let text = point < 2 ? " Point" : " Points"
-    element('pointCounter').textContent = point.toString() + text
+    reload()
 }
 
 function buy(obj) {
     if(obj == 'oneBitCalculator'){
-        if(point >= objects.oneBitCalculator.cost){
-            let text = point < 2 ? " Point" : " Points"
-            point -= objects.oneBitCalculator.cost
-            objects.oneBitCalculator.amount += 1
+        if(point >= objects.oneBitCalculator.cost*buyScale){
+            point -= realCost * buyScale
+            objects.oneBitCalculator.cost = Math.ceil(objects.oneBitCalculator.cost * 0.26)
+            objects.oneBitCalculator.amount += 1*buyScale
             pointPerClick = 1 + objects.oneBitCalculator.amount
-            element('increment').textContent = "Increment " + pointPerClick.toString() + text
-            element('pointCounter').textContent = point.toString() + text
-            element('oneBitCalculatorText').textContent = "Calculator (1-bit): " + objects.oneBitCalculator.amount.toString()
+            reload()
         }
     }
+}
+
+function setBuyScale(){
+    buyScale = int(element('buyScale').value)
+    console.log(buyScale)
+    if(isNaN(buyScale)){
+        buyScale = 1
+    } else if(buyScale == 0){
+        buyScale = 1
+    }
+    console.log(buyScale)
+}
+
+function save(){
+    localStorage.setItem('point', point)
+    localStorage.setItem('ppc', pointPerClick)
+    localStorage.setItem('oneBitCalculator', objects.oneBitCalculator.amount)
+    reload()
+}
+
+function load(){
+    point = parseInt(localStorage.getItem('point'))
+    pointPerClick = int(localStorage.getItem('ppc'))
+    oneBitCalculator = int(localStorage.getItem('oneBitCalculator'))
+    reload()
 }
