@@ -47,12 +47,14 @@ function save(){
     localStorage.setItem('point', point)
     localStorage.setItem('ppc', pointPerClick)
     localStorage.setItem('oneBitCalculator', objects.oneBitCalculator.amount)
+    localStorage.setItem('oneBitCalculatorCost', objects.oneBitCalculator.cost)
     reload()
 }
 
 function load(){
     point = parseInt(localStorage.getItem('point'))
     pointPerClick = int(localStorage.getItem('ppc'))
-    oneBitCalculator = int(localStorage.getItem('oneBitCalculator'))
+    objects.oneBitCalculator.cost = int(localStorage.getItem('oneBitCalculatorCost'))
+    objects.oneBitCalculator.amount = int(localStorage.getItem('oneBitCalculator'))
     reload()
 }
